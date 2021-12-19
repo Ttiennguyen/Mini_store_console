@@ -1,12 +1,16 @@
 package MiniStrore_1;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Danhmuc {
 
 	public static void main(String[] args) throws Exception {
 		
+		ArrayList<SANPHAM> dssp = new ArrayList<SANPHAM>();
+		
 		Scanner input = new Scanner(System.in);
+		
 		// gán giá trị flag = true chạy vòng lặp
 		boolean flag = true;
 		// a là nhập chức năng còn n là nhập số lượng ngay case 1
@@ -15,6 +19,7 @@ public class Danhmuc {
 		QuanLi ql =new QuanLi();
 		QuanLi_NhanVien ql_nv =new QuanLi_NhanVien();
 		IO_file f = new IO_file();
+		
 		//println bth
 		 System.out.println("\t      Welcome ban den Mini-Store \n");
 		
@@ -40,11 +45,11 @@ public class Danhmuc {
 	            		{
 	            			SANPHAM sp =new SANPHAM();
 	            			sp.nhapthongtin();
-	      
 	            			// them sp
 	            			ql.addSP(sp);
-	            			f.writefile(sp);
+	            			dssp.add(sp);
 	            		}	         
+            			f.writefile(dssp);
 	            		break;
 	            	case 2:// in thông tin sản phẩm ra màn hình console
 	            		ql.output();
@@ -58,7 +63,7 @@ public class Danhmuc {
 	            		break;
 	            	case 5:// xoá sản phẩm theo mã sản phẩm 
 	            		ql.xoaSP();
-	        			ql.output();
+	        			break;
 	            	case 6:// cập nhật nhân viên trong cửa hàng
 	            		System.out.println("nhap so luong nhan vien can them ");
 	            		n = input.nextInt();
@@ -80,8 +85,8 @@ public class Danhmuc {
 	            	case 9: // xoá nhân viên trong cửa hàng
 	            		ql_nv.xoaNV();
 	            		break;
-	            	case 10: // thanh toan 
-	            		ql.ThanhToan();
+	            	case 10: // chỉnh sửa trên file
+	            		ql.edit();
 	            		break;
 	            	default:// nhập 1 số bất kì để thoát chương trình
 	                    System.out.println("Goodbye");
