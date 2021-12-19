@@ -39,19 +39,20 @@ public class IO_file {
 		
 	}
 	
-	public void writefile(SANPHAM sp)
+	public void writefile(List<SANPHAM> list)
 	{
-		ArrayList<SANPHAM> dssp = new ArrayList<SANPHAM>();
-		String line = sp.getMaSP()+";"+sp.getTenSP()+";"+sp.getGia()+";"+sp.getSl()+";"+sp.getDvt();
+		
 		try 
 		{
 			File f = new File("sanpham.txt");
 			FileWriter fw = new FileWriter(f);
 			 PrintWriter pw = new PrintWriter(fw);
-		
-				 pw.print(line);
-				 
-	            pw.close();
+			 for(SANPHAM sp : list) 
+			 {
+				 String line = sp.getMaSP()+";"+sp.getTenSP()+";"+sp.getGia()+";"+sp.getSl()+";"+sp.getDvt();
+				 pw.println(line);
+			 }
+				 pw.close();
 	            fw.close();
 			
 		}
